@@ -109,8 +109,8 @@
 	</nav>
 </header>
 
-<main id="content" class="bg-neutral-100 text-sm py-3 dark:bg-neutral-900">
-	<div class="max-w-full min-h-300 mx-auto py-10 px-4 sm:px-6 lg:px-8">
+<main id="content" class="bg-neutral-100 text-sm py-2 dark:bg-neutral-900">
+	<div class="max-w-full min-h-300 mx-auto px-2">
 		{@render children()}
 	</div>
 </main>
