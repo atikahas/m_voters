@@ -11,6 +11,8 @@
 	};
 
 	$: totalVoters = data?.stats?.total ?? 0;
+	$: pru15Voters = data?.stats?.votersPru15 ?? 0;
+	$: prn15Voters = data?.stats?.votersPrn15 ?? 0;
 </script>
 
 <div class="mb-2 flex w-full flex-wrap gap-2 lg:flex-nowrap">
@@ -34,11 +36,6 @@
 			<option value="">All DM</option>
 		</select>
 	</div>
-    <div class="flex flex-1">
-		<select class="py-1 px-4 pe-9 block w-full border-neutral-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-			<option value="">PRU / PRN</option>
-		</select>
-	</div>
 	<div class="flex flex-1">
 		<div class="w-full">
 			<label for="search" class="sr-only">Search</label>
@@ -52,17 +49,49 @@
 	</div>
 </div>
 
-<div class="flex flex-col bg-white border border-neutral-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
-	<div class="p-4 md:p-5">
-		<div class="flex items-center gap-x-2">
-			<p class="text-xs uppercase text-neutral-500 dark:text-neutral-500">
-				Total Voters
-			</p>
-		</div>
-		<div class="mt-1 flex items-center gap-x-2">
-			<h3 class="text-xl sm:text-2xl font-medium text-neutral-800 dark:text-neutral-200">
-				{formatNumber(totalVoters)}
-			</h3>
-		</div>
-	</div>
+<div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+	<div class="flex flex-col bg-white border border-neutral-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+            <div class="p-4 md:p-5">
+                <div class="flex items-center gap-x-2">
+                    <p class="text-xs uppercase text-neutral-500 dark:text-neutral-500">
+                        Total Current Voters
+                </p>
+            </div>
+            <div class="mt-1 flex items-center gap-x-2">
+                <h3 class="text-xl sm:text-2xl font-medium text-neutral-800 dark:text-neutral-200">
+                    {formatNumber(totalVoters)}
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col bg-white border border-neutral-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+            <div class="p-4 md:p-5">
+                <div class="flex items-center gap-x-2">
+                    <p class="text-xs uppercase text-neutral-500 dark:text-neutral-500">
+                        Total PRU15 Voters
+                </p>
+            </div>
+            <div class="mt-1 flex items-center gap-x-2">
+                <h3 class="text-xl sm:text-2xl font-medium text-neutral-800 dark:text-neutral-200">
+                    {formatNumber(pru15Voters)}
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col bg-white border border-neutral-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+            <div class="p-4 md:p-5">
+                <div class="flex items-center gap-x-2">
+                    <p class="text-xs uppercase text-neutral-500 dark:text-neutral-500">
+                        Total PRN15 Voters
+                </p>
+            </div>
+            <div class="mt-1 flex items-center gap-x-2">
+                <h3 class="text-xl sm:text-2xl font-medium text-neutral-800 dark:text-neutral-200">
+                    {formatNumber(prn15Voters)}
+                </h3>
+            </div>
+        </div>
+    </div>
 </div>
