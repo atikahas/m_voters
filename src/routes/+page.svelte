@@ -303,105 +303,108 @@ const getChartOptions = (meta, maxValue) => ({
 	</div>
 </div>
 
-<div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-	<div class="flex flex-col rounded-xl border border-neutral-200 bg-white shadow-2xs dark:border-neutral-700 dark:bg-neutral-800">
-		<div class="p-4 md:p-5">
-			<div class="flex items-center gap-x-2">
-				<p class="text-xs uppercase text-neutral-500 dark:text-neutral-500">Jumlah Pengundi Semasa</p>
-			</div>
-			<div class="mt-1 flex items-center gap-x-2">
-				<h3 class="text-xl font-medium text-neutral-800 dark:text-neutral-200 sm:text-2xl">
-					{formatNumber(totalVoters)}
-				</h3>
+<div class="grid gap-2 lg:grid-cols-3">
+	<div class="space-y-2">
+		<div class="flex flex-col rounded-xl border border-neutral-200 bg-white shadow-2xs dark:border-neutral-700 dark:bg-neutral-800">
+			<div class="p-4 md:p-5">
+				<div class="flex items-center gap-x-2">
+					<p class="text-xs uppercase text-neutral-500 dark:text-neutral-500">Jumlah Pengundi Semasa</p>
+				</div>
+				<div class="mt-1 flex items-center gap-x-2">
+					<h3 class="text-xl font-medium text-neutral-800 dark:text-neutral-200 sm:text-2xl">
+						{formatNumber(totalVoters)}
+					</h3>
+				</div>
 			</div>
 		</div>
+
+		{#if raceBreakdown.length}
+			<div class="rounded-xl border border-neutral-200 bg-white shadow-2xs dark:border-neutral-700 dark:bg-neutral-800">
+				<div class="p-4 md:p-5">
+					<div class="flex items-start justify-between gap-4">
+						<div>
+							<h3 class="text-base font-semibold text-neutral-800 dark:text-neutral-100">Semasa</h3>
+							<p class="text-sm text-neutral-500 dark:text-neutral-400">
+								Pengundi semasa mengikut bangsa.
+							</p>
+						</div>
+					</div>
+					<div
+						class="mt-4 rounded-lg bg-neutral-50 p-2 dark:bg-neutral-900/50"
+						style={`height: ${chartHeight}px;`}
+					>
+						<canvas bind:this={totalCanvas} class="h-full w-full"></canvas>
+					</div>
+				</div>
+			</div>
+		{/if}
 	</div>
 
-	<div class="flex flex-col rounded-xl border border-neutral-200 bg-white shadow-2xs dark:border-neutral-700 dark:bg-neutral-800">
-		<div class="p-4 md:p-5">
-			<div class="flex items-center gap-x-2">
-				<p class="text-xs uppercase text-neutral-500 dark:text-neutral-500">Jumlah Pengundi PRU15</p>
-			</div>
-			<div class="mt-1 flex items-center gap-x-2">
-				<h3 class="text-xl font-medium text-neutral-800 dark:text-neutral-200 sm:text-2xl">
-					{formatNumber(pru15Voters)}
-				</h3>
+	<div class="space-y-2">
+		<div class="flex flex-col rounded-xl border border-neutral-200 bg-white shadow-2xs dark:border-neutral-700 dark:bg-neutral-800">
+			<div class="p-4 md:p-5">
+				<div class="flex items-center gap-x-2">
+					<p class="text-xs uppercase text-neutral-500 dark:text-neutral-500">Jumlah Pengundi PRU15</p>
+				</div>
+				<div class="mt-1 flex items-center gap-x-2">
+					<h3 class="text-xl font-medium text-neutral-800 dark:text-neutral-200 sm:text-2xl">
+						{formatNumber(pru15Voters)}
+					</h3>
+				</div>
 			</div>
 		</div>
+
+		{#if raceBreakdown.length}
+			<div class="rounded-xl border border-neutral-200 bg-white shadow-2xs dark:border-neutral-700 dark:bg-neutral-800">
+				<div class="p-4 md:p-5">
+					<div class="flex items-start justify-between gap-4">
+						<div>
+							<h3 class="text-base font-semibold text-neutral-800 dark:text-neutral-100">PRU15</h3>
+							<p class="text-sm text-neutral-500 dark:text-neutral-400">Pengundi PRU15 mengikut bangsa.</p>
+						</div>
+					</div>
+					<div
+						class="mt-4 rounded-lg bg-neutral-50 p-2 dark:bg-neutral-900/50"
+						style={`height: ${chartHeight}px;`}
+					>
+						<canvas bind:this={pru15Canvas} class="h-full w-full"></canvas>
+					</div>
+				</div>
+			</div>
+		{/if}
 	</div>
 
-	<div class="flex flex-col rounded-xl border border-neutral-200 bg-white shadow-2xs dark:border-neutral-700 dark:bg-neutral-800">
-		<div class="p-4 md:p-5">
-			<div class="flex items-center gap-x-2">
-				<p class="text-xs uppercase text-neutral-500 dark:text-neutral-500">Jumlah Pengundi PRN15</p>
-			</div>
-			<div class="mt-1 flex items-center gap-x-2">
-				<h3 class="text-xl font-medium text-neutral-800 dark:text-neutral-200 sm:text-2xl">
-					{formatNumber(prn15Voters)}
-				</h3>
+	<div class="space-y-2">
+		<div class="flex flex-col rounded-xl border border-neutral-200 bg-white shadow-2xs dark:border-neutral-700 dark:bg-neutral-800">
+			<div class="p-4 md:p-5">
+				<div class="flex items-center gap-x-2">
+					<p class="text-xs uppercase text-neutral-500 dark:text-neutral-500">Jumlah Pengundi PRN15</p>
+				</div>
+				<div class="mt-1 flex items-center gap-x-2">
+					<h3 class="text-xl font-medium text-neutral-800 dark:text-neutral-200 sm:text-2xl">
+						{formatNumber(prn15Voters)}
+					</h3>
+				</div>
 			</div>
 		</div>
+
+		{#if raceBreakdown.length}
+			<div class="rounded-xl border border-neutral-200 bg-white shadow-2xs dark:border-neutral-700 dark:bg-neutral-800">
+				<div class="p-4 md:p-5">
+					<div class="flex items-start justify-between gap-4">
+						<div>
+							<h3 class="text-base font-semibold text-neutral-800 dark:text-neutral-100">PRN15</h3>
+							<p class="text-sm text-neutral-500 dark:text-neutral-400">Pengundi PRN15 mengikut bangsa.</p>
+						</div>
+					</div>
+					<div
+						class="mt-4 rounded-lg bg-neutral-50 p-2 dark:bg-neutral-900/50"
+						style={`height: ${chartHeight}px;`}
+					>
+						<canvas bind:this={prn15Canvas} class="h-full w-full"></canvas>
+					</div>
+				</div>
+			</div>
+		{/if}
 	</div>
 </div>
-
-{#if raceBreakdown.length}
-	<div class="mt-2 grid gap-2 lg:grid-cols-3">
-		<div class="rounded-xl border border-neutral-200 bg-white shadow-2xs dark:border-neutral-700 dark:bg-neutral-800">
-			<div class="p-4 md:p-5">
-				<div class="flex items-start justify-between gap-4">
-					<div>
-						<h3 class="text-base font-semibold text-neutral-800 dark:text-neutral-100">
-							Semasa
-						</h3>
-						<p class="text-sm text-neutral-500 dark:text-neutral-400">Pengundi semasa mengikut bangsa.</p>
-					</div>
-				</div>
-				<div
-					class="mt-4 rounded-lg bg-neutral-50 p-2 dark:bg-neutral-900/50"
-					style={`height: ${chartHeight}px;`}
-				>
-					<canvas bind:this={totalCanvas} class="h-full w-full"></canvas>
-				</div>
-			</div>
-		</div>
-
-		<div class="rounded-xl border border-neutral-200 bg-white shadow-2xs dark:border-neutral-700 dark:bg-neutral-800">
-			<div class="p-4 md:p-5">
-				<div class="flex items-start justify-between gap-4">
-					<div>
-						<h3 class="text-base font-semibold text-neutral-800 dark:text-neutral-100">
-							PRU15
-						</h3>
-						<p class="text-sm text-neutral-500 dark:text-neutral-400">Pengundi PRU15 mengikut bangsa.</p>
-					</div>
-				</div>
-				<div
-					class="mt-4 rounded-lg bg-neutral-50 p-2 dark:bg-neutral-900/50"
-					style={`height: ${chartHeight}px;`}
-				>
-					<canvas bind:this={pru15Canvas} class="h-full w-full"></canvas>
-				</div>
-			</div>
-		</div>
-
-		<div class="rounded-xl border border-neutral-200 bg-white shadow-2xs dark:border-neutral-700 dark:bg-neutral-800">
-			<div class="p-4 md:p-5">
-				<div class="flex items-start justify-between gap-4">
-					<div>
-						<h3 class="text-base font-semibold text-neutral-800 dark:text-neutral-100">
-							PRN15
-						</h3>
-						<p class="text-sm text-neutral-500 dark:text-neutral-400">Pengundi PRN15 mengikut bangsa.</p>
-					</div>
-				</div>
-				<div
-					class="mt-4 rounded-lg bg-neutral-50 p-2 dark:bg-neutral-900/50"
-					style={`height: ${chartHeight}px;`}
-				>
-					<canvas bind:this={prn15Canvas} class="h-full w-full"></canvas>
-				</div>
-			</div>
-		</div>
-	</div>
-
-{/if}
